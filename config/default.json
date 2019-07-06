@@ -1,0 +1,9 @@
+{
+    "print hello world": {
+        "run": "echo 'hello world'",
+        "async": false
+    },
+    "list home dir": {
+        "run": "ls -l ~"
+    }
+}
