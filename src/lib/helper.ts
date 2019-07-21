@@ -1,13 +1,13 @@
-const GetOpt = require('node-getopt');
-const Fs = require('fs');
+import * as  Fs from 'fs';
+import * as GetOpt from 'node-getopt';
 
 const DEFAULT_CONFIG = './config/default.json';
 
 /**
  * Parse command-line args and return config path.
  * @return { string } configPath
-*/
-function parseArgs() {
+ */
+export function parseArgs() {
     const opts = GetOpt.create(
         [
             ['c', 'config-path=', 'config path'],
@@ -32,18 +32,7 @@ function parseArgs() {
  * Parse config file.
  * @param {string} configPath
  */
-function parseConfigFile(configPath) {
-    const configJson = JSON.parse(Fs.readFileSync(configPath));
+export function parseConfigFile(configPath: string) {
+    const configJson = JSON.parse(Fs.readFileSync(configPath).toString());
     console.log(configJson);
 }
-
-/**
- * main function.
- * @return { void }
- */
-function main() {
-    const configPath = parseArgs();
-    parseConfigFile(configPath);
-}
-
-main();
